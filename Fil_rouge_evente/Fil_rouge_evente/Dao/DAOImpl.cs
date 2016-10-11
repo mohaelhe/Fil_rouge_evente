@@ -30,12 +30,12 @@ namespace Fil_rouge_evente.Dao
             using (var db = new Dao.ProjetContext())
             {
                 Role r = new Role();
-                r.RoleId = a.RoleId;
                 r.Droit = 2;       // 2 choix pour l'administrateur
 
                 db.roles.Add(r);
                 db.SaveChanges();
 
+                a.RoleId = r.RoleId;
 
                 db.utilisateurs.Add(a);
                 db.SaveChanges();

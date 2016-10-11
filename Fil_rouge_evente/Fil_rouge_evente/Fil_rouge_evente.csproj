@@ -202,17 +202,13 @@
     <Compile Include="Metier\StatutCommande.cs" />
     <Compile Include="Metier\Utilisateur.cs" />
     <Compile Include="Metier\UtilisateurImpl.cs" />
-    <Compile Include="Migrations\201610040803507_bdd.cs" />
-    <Compile Include="Migrations\201610040803507_bdd.Designer.cs">
-      <DependentUpon>201610040803507_bdd.cs</DependentUpon>
+    <Compile Include="Migrations\201610111326078_updateadmin.cs" />
+    <Compile Include="Migrations\201610111326078_updateadmin.Designer.cs">
+      <DependentUpon>201610111326078_updateadmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610041101239_suppression_colonne_fidelite.cs" />
-    <Compile Include="Migrations\201610041101239_suppression_colonne_fidelite.Designer.cs">
-      <DependentUpon>201610041101239_suppression_colonne_fidelite.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610051933173_confirmPassword.cs" />
-    <Compile Include="Migrations\201610051933173_confirmPassword.Designer.cs">
-      <DependentUpon>201610051933173_confirmPassword.cs</DependentUpon>
+    <Compile Include="Migrations\201610111330596_updaterole2.cs" />
+    <Compile Include="Migrations\201610111330596_updaterole2.Designer.cs">
+      <DependentUpon>201610111330596_updaterole2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdresseClientModel.cs" />
@@ -304,14 +300,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610040803507_bdd.resx">
-      <DependentUpon>201610040803507_bdd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610111326078_updateadmin.resx">
+      <DependentUpon>201610111326078_updateadmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610041101239_suppression_colonne_fidelite.resx">
-      <DependentUpon>201610041101239_suppression_colonne_fidelite.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610051933173_confirmPassword.resx">
-      <DependentUpon>201610051933173_confirmPassword.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610111330596_updaterole2.resx">
+      <DependentUpon>201610111330596_updaterole2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
