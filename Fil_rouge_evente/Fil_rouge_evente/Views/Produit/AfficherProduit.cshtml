@@ -1,0 +1,36 @@
+﻿@model Fil_rouge_evente.Metier.Produit
+@{
+    ViewBag.Title = "AfficherProduit";
+}
+
+<h2>Afficher un produit</h2>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Champ</th>
+                <th>Valeur</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Categorie)</td>
+                <td>@Html.DisplayFor(model => model.Categorie)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Nom)</td>
+                <td>@Html.DisplayFor(model => model.Nom)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Prix)</td>
+                <td>@Html.DisplayFor(model => model.Prix)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Stock)</td>
+                <td>@Html.DisplayFor(model => model.Stock)</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

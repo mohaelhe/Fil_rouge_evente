@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "LoggedIn";
+}
+
+<h2>LoggedIn</h2>
+<h4>Bonjour @Session["Prenom"].ToString() @Session["Nom"].ToString()</h4>
+
+@Html.ActionLink("Se déconnecter", "logout")<br />
+<h4>Mon Compte</h4>
+@Html.ActionLink("Modifier mon compte", "ModifierCompte")<br />
+
+<h4>Mon Adresse</h4>
+@Html.ActionLink("Afficher mes adresses","AfficherAdresses")<br />
+@Html.ActionLink("Ajouter une adresse","AjouterAdresse")<br />
+
+<h4>Produits</h4>
+

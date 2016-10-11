@@ -1,0 +1,16 @@
+﻿@model Fil_rouge_evente.Metier.Promotion
+@{
+    ViewBag.Title = "ajouterPromotion";
+}
+
+<h2>ajouterPromotion</h2>
+
+<div>
+    @using (Html.BeginForm("ajouterPromotion", "Produit", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.ProduitId)
+        <span>@Html.DisplayNameFor(model => model.Remise) : </span><span>@Html.TextBoxFor(model => model.Remise)</span><br />
+        <button type="submit">Ajouter</button>
+    }
+</div>
+

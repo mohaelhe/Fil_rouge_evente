@@ -1,0 +1,13 @@
+﻿@model Fil_rouge_evente.Metier.Administrateur
+@{
+    ViewBag.Title = "loginAdmin";
+}
+
+<h2>loginAdmin</h2>
+@using (Html.BeginForm("loginAdmin", "Administrateur", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <span>@Html.DisplayNameFor(model => model.login) :</span><span>@Html.TextBoxFor(model => model.login)</span><br />
+    <span>@Html.DisplayNameFor(model => model.password) :</span><span>@Html.PasswordFor(model => model.password)</span><br />
+    <button type="submit">Valider</button>
+}

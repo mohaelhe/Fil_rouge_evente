@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Fil_rouge_evente.Metier.Produit>
+@{
+    ViewBag.Title = "listerProduitUtilisateur";
+}
+
+<h2>listerProduitUtilisateur</h2>
+
+<div>
+    @using (Html.BeginForm("listerProduitUtilisateur", "Produit", FormMethod.Post))
+    {
+        <span>@Html.DisplayNameFor(model => model.Nom) :</span><span>@Html.TextBox("Nom")</span>   //Dans le TextBox, doit mettre le même nom que dans le controller en Post
+        <button type="submit">Rechercher</button>
+    }
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Nom)</th>
+            <th>@Html.DisplayNameFor(model => model.Prix)</th>
+            <th>@Html.DisplayNameFor(model => model.Categorie)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var m in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => m.Nom)</td>
+                <td>@Html.DisplayFor(modelItem => m.Prix)</td>
+                <td>@Html.DisplayFor(modelItem => m.Categorie)</td>
+                <td>@Html.ActionLink("Afficher", "afficherProduitUt", new { id = m.ProduitId })</td>
+                <td>@Html.ActionLink("Ajouter au panier","ajouterLigneCommande",new {id = m.ProduitId})</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
