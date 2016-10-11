@@ -42,11 +42,18 @@ namespace Fil_rouge_evente.Controllers
         [HttpPost]
         public ActionResult loginAdmin(Utilisateur u)
         {
+           
+
+
             var user = iadmin.connexionCompte(u);
             if(user != null)
             {
+                ICollection<Role> resultat = iadmin.getRole(user);
+                int res = 0;
+                foreach (var p in resultat)
+                    res = p.Droit;
                 Session["UtilisateurId"] = user.UtilisateurId;
-                Session["RoleId"] = user.RoleId;
+                Session["RoleId"] =res;
                 return RedirectToAction("LoggedInAdmin");
             } 
             else
@@ -58,8 +65,8 @@ namespace Fil_rouge_evente.Controllers
 
         public ActionResult loggedInAdmin()
         {
-            var roleid = (int)(Session["RoleId"]);
-            if ((Session["UtilisateurId"] != null) && (roleid == 2))
+           
+            if ((Session["UtilisateurId"] != null) && (Convert.ToInt32(Session["RoleId"]) == 2))
             {
                 return View();
             }

@@ -78,6 +78,7 @@ namespace Fil_rouge_evente.Dao
 
         Role ajouterRole(Role r);
         ICollection<Role> listerRoles();
+        ICollection<Role> getRole(Utilisateur u);
 
         AdresseClient ajouterAdresseClient(int AdresseId, int UtilisateurId);
         ICollection<AdresseClientModel> listerAdresseClient();

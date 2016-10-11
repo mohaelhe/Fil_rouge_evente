@@ -33,6 +33,7 @@ namespace Fil_rouge_evente.Metier
         [DataType(DataType.Password)]
         public string confirmPassword { get; set; }
 
+
         public virtual ICollection<Historique_UtilisateurProduit> historiques_UtilisateurProduit { get; set; }
         public int RoleId { get; set; }
         public virtual Role role { get; set; }

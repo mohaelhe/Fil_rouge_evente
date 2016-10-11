@@ -204,5 +204,10 @@ namespace Fil_rouge_evente.Metier
         {
             return idao.afficherFidelite(FideliteId);
         }
+
+        public ICollection<Role> getRole(Utilisateur u)
+        {
+            return idao.getRole(u);
+        }
     }
 }
