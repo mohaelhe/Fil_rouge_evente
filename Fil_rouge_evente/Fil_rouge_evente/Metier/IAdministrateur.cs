@@ -24,6 +24,7 @@ namespace Fil_rouge_evente.Metier
         ICollection<Catalogue> listerCatalogue();
         ICollection<Produit> rechercherProduitById(int id);
         ICollection<Role> listerRoles();
+        ICollection<Role> getRole(Utilisateur u);
         ICollection<Utilisateur> listerComptes();
         Abonnement creerAbonnement(Abonnement a);
         void supprimerAbonnement(int AbonnementId);

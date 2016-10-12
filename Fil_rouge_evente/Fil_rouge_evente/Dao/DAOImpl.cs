@@ -29,7 +29,14 @@ namespace Fil_rouge_evente.Dao
         {
             using (var db = new Dao.ProjetContext())
             {
-                a.RoleId = 2;
+                Role r = new Role();
+                r.Droit = 2;       // 2 choix pour l'administrateur
+
+                db.roles.Add(r);
+                db.SaveChanges();
+
+                a.RoleId = r.RoleId;
+
                 db.utilisateurs.Add(a);
                 db.SaveChanges();
                 return a;
@@ -801,6 +808,16 @@ namespace Fil_rouge_evente.Dao
                 return db.fidelites.ToList();
             }
         }
-        
+
+        public ICollection<Role> getRole(Utilisateur u)
+        {
+            using (var edb = new ProjetContext())
+            {
+                var req = from r in edb.roles
+                          where (u.RoleId == r.RoleId)
+                          select r;
+                return req.ToList();
+            }
+        }
     }
 }
