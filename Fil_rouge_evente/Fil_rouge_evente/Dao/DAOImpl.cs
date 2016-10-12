@@ -3,16 +3,17 @@ using Fil_rouge_evente.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
 namespace Fil_rouge_evente.Dao
 {
-    public class DAOImpl: IDAO
+    public class DAOImpl : IDAO
     {
         public Client creationCompteClient(Client c)
         {
-            using(var db = new Dao.ProjetContext())
+            using (var db = new Dao.ProjetContext())
             {
                 c.RoleId = 1;
                 c.NombrePoints = 0;
@@ -78,9 +79,11 @@ namespace Fil_rouge_evente.Dao
         {
             using (var db = new Dao.ProjetContext())
             {
+
                 db.produits.Add(p);
                 db.SaveChanges();
                 return p;
+
             }
         }
 
@@ -179,7 +182,7 @@ namespace Fil_rouge_evente.Dao
 
         public Avis_ClientProduit ajouterAvis(Avis_ClientProduit comm)
         {
-            using(var db = new Dao.ProjetContext())
+            using (var db = new Dao.ProjetContext())
             {
                 db.avis_clientProduits.Add(comm);
                 db.SaveChanges();
@@ -284,7 +287,7 @@ namespace Fil_rouge_evente.Dao
         {
             using (var db = new Dao.ProjetContext())
             {
-                
+
                 db.Entry(c).State = EntityState.Modified;
                 db.SaveChanges();
                 return c;
@@ -305,9 +308,11 @@ namespace Fil_rouge_evente.Dao
         {
             using (var db = new Dao.ProjetContext())
             {
-                db.Entry(p).State = EntityState.Modified;
-                db.SaveChanges();
-                return p;
+               
+                    db.Entry(p).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return p;
+               
             }
         }
 
@@ -326,7 +331,7 @@ namespace Fil_rouge_evente.Dao
                 return db.produits.Find(ProduitId);
             }
         }
-     
+
         //public Utilisateur modifierUtilisateur(Utilisateur u)
         //{
         //    using (var db = new Dao.ProjetContext())
@@ -380,7 +385,7 @@ namespace Fil_rouge_evente.Dao
                 return res.ToList();
             }
         }
-        
+
 
         public Promotion modifierPromotion(Promotion p)
         {
@@ -449,7 +454,7 @@ namespace Fil_rouge_evente.Dao
                 return db.paniers.Find(PanierId);
             }
         }
-        
+
 
         //Peut-être nécessité de faire un model pour afficher également le login du client
         public Avis_ClientProduit afficherAvis(int UtilisateurId, int ProduitId)
@@ -478,12 +483,12 @@ namespace Fil_rouge_evente.Dao
         {
             using (var db = new Dao.ProjetContext())
             {
-                
-                
-                    db.abonnements.Add(a);
-                    db.SaveChanges();
-                    return a;
-                
+
+
+                db.abonnements.Add(a);
+                db.SaveChanges();
+                return a;
+
             }
         }
 
@@ -600,7 +605,7 @@ namespace Fil_rouge_evente.Dao
         {
             using (var db = new ProjetContext())
             {
-               
+
                 return db.promotions.ToList();
             }
         }
@@ -689,7 +694,7 @@ namespace Fil_rouge_evente.Dao
                 var res = from p1 in db.promotions
                           join p2 in db.produits on p1.ProduitId equals p2.ProduitId
                           select new PromotionProduit
-                          {                              
+                          {
                               Remise = p1.Remise,
                               ProduitId = p2.ProduitId,
                               ProduitNom = p2.Nom,
@@ -801,6 +806,6 @@ namespace Fil_rouge_evente.Dao
                 return db.fidelites.ToList();
             }
         }
-        
+
     }
 }

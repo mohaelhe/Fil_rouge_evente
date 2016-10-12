@@ -214,6 +214,10 @@
     <Compile Include="Migrations\201610051933173_confirmPassword.Designer.cs">
       <DependentUpon>201610051933173_confirmPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610111430077_CollectionCatalogue.cs" />
+    <Compile Include="Migrations\201610111430077_CollectionCatalogue.Designer.cs">
+      <DependentUpon>201610111430077_CollectionCatalogue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdresseClientModel.cs" />
     <Compile Include="Models\ProduitCatalogueModel.cs" />
@@ -312,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610051933173_confirmPassword.resx">
       <DependentUpon>201610051933173_confirmPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610111430077_CollectionCatalogue.resx">
+      <DependentUpon>201610111430077_CollectionCatalogue.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

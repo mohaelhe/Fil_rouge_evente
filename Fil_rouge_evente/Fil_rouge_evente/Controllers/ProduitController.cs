@@ -19,30 +19,41 @@ namespace Fil_rouge_evente.Controllers
 
         public ActionResult AjouterProduit()
         {
-            var roleid = (int)(Session["RoleId"]);
-            if ((Session["UtilisateurId"] != null) && (roleid == 2))
+
+            if ((Session["UtilisateurId"] != null) && ((int)(Session["RoleId"]) == 2))
             {
                 ViewBag.CatalogueId = new SelectList(iadmin.listerCatalogue(), "CatalogueId", "Nom");
+
                 return View();
             }
             else
             {
-                return RedirectToAction("loginAdmin","Administrateur");
+                return RedirectToAction("loginAdmin", "Administrateur");
             }
         }
 
         [HttpPost]
         public ActionResult AjouterProduit(Produit p)
         {
-            iadmin.ajouterProduit(p);
-            ViewBag.CatalogueId = new SelectList(iadmin.listerCatalogue(), "CatalogueId", "Nom");
-            return RedirectToAction("ListerProduitsAdmin");
+            if (ModelState.IsValid)
+            {
+                iadmin.ajouterProduit(p);
+                ViewBag.CatalogueId = new SelectList(iadmin.listerCatalogue(), "CatalogueId", "Nom");
+                return RedirectToAction("ListerProduitsAdmin");
+
+            }
+            else
+            {
+                ViewBag.CatalogueId = new SelectList(iadmin.listerCatalogue(), "CatalogueId", "Nom");
+                return View(p);
+            }
+
         }
 
         public ActionResult ListerProduitsAdmin()
         {
-            var roleid = (int)(Session["RoleId"]);
-            if ((Session["UtilisateurId"] != null) && (roleid == 2))
+
+            if ((Session["UtilisateurId"] != null) && ((int)(Session["RoleId"]) == 2))
             {
                 var res = iadmin.listerProduitCatalogue();
                 return View(res);
@@ -55,12 +66,14 @@ namespace Fil_rouge_evente.Controllers
 
         public ActionResult ModifierProduit(int id)
         {
-            var roleid = (int)(Session["RoleId"]);
-            if ((Session["UtilisateurId"] != null) && (roleid == 2))
+
+            if ((Session["UtilisateurId"] != null) && ((int)(Session["RoleId"]) == 2))
             {
+
                 Produit p = iadmin.afficherProduit(id);
                 ViewBag.CatalogueId = new SelectList(iadmin.listerCatalogue(), "CatalogueId", "Nom", p.CatalogueId);
                 return View(p);
+
             }
             else
             {
@@ -71,15 +84,25 @@ namespace Fil_rouge_evente.Controllers
         [HttpPost]
         public ActionResult ModifierProduit(Produit p)
         {
-            var res = iadmin.modifierProduit(p);
+            if (ModelState.IsValid)
+            {
+                var res = iadmin.modifierProduit(p);
+                return RedirectToAction("ListerProduitsAdmin");
+            }
+            else
+            {
+                ViewBag.CatalogueId = new SelectList(iadmin.listerCatalogue(), "CatalogueId", "Nom", p.CatalogueId);
+                return View();
+            }
+                
 
-            return RedirectToAction("ListerProduitsAdmin");
+
         }
 
         public ActionResult SupprimerProduit(int id)
         {
-            var roleid = (int)(Session["RoleId"]);
-            if ((Session["UtilisateurId"] != null) && (roleid == 2))
+           
+            if ((Session["UtilisateurId"] != null) && ((int)(Session["RoleId"]) == 2))
             {
                 iadmin.supprimerProduit(id);
                 return RedirectToAction("ListerProduitsAdmin");
@@ -132,7 +155,7 @@ namespace Fil_rouge_evente.Controllers
             return View(res);
         }
 
-      
+
         public ActionResult AfficherProduit(int id)
         {
             var roleid = (int)(Session["RoleId"]);
@@ -187,8 +210,8 @@ namespace Fil_rouge_evente.Controllers
             var roleid = (int)(Session["RoleId"]);
             if ((Session["UtilisateurId"] != null) && (roleid == 2))
             {
-            var res = iadmin.afficherPromotionProduit();
-            return View(res);
+                var res = iadmin.afficherPromotionProduit();
+                return View(res);
             }
             else
             {
