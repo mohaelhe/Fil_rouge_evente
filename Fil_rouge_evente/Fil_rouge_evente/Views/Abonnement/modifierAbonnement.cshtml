@@ -11,7 +11,7 @@
         @Html.HiddenFor(model => model.AbonnementId)
         <span>@Html.DisplayNameFor(model => model.Nom)</span><span>@Html.TextBoxFor(model => model.Nom)</span><span>@Html.ValidationMessageFor(model => model.Nom)</span><br />
         <span>@Html.DisplayNameFor(model => model.Prix)</span><span>@Html.TextBoxFor(model => model.Prix)</span><span>@Html.ValidationMessageFor(model => model.Prix)</span><br />
-        <span>@Html.DisplayNameFor(model => model.Duree)</span><span>@Html.TextBoxFor(model => model.Duree)</span><span>@Html.ValidationMessageFor(model => model.Duree)</span><br />
+        <span>@Html.DisplayNameFor(model => model.Duree)</span><span>@Html.EnumDropDownListFor(model => model.Duree) mois</span><span>@Html.ValidationMessageFor(model => model.Duree)</span><br />
         <button type="submit">Mettre à jour</button>
     }
 </div>

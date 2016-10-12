@@ -13,12 +13,14 @@ namespace Fil_rouge_evente.Metier
         [Required(ErrorMessage ="Le champ 'Nom de l'abonnement' est obligatoire")]
         [Display(Name ="Nom de l'abonnement")]
         public string Nom { get; set; }
+        public enum TypeDuree { un, trois, six, douze };
         [Required(ErrorMessage ="Le champ 'Durée' est obligatoire")]
         [Display(Name ="Durée")]
-        public int Duree { get; set; }
+        public TypeDuree Duree { get; set; }
         [Required(ErrorMessage ="Le champ 'Prix' est obligatoire")]
         [Display(Name ="Prix")]
         [Column("Prix", TypeName = "money")]
+        
         public decimal Prix { get; set; }
 
         public virtual ICollection<AbonnementClient> abonnementClients { get; set; }

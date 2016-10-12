@@ -18,8 +18,7 @@ namespace Fil_rouge_evente.Controllers
 
         public ActionResult ajouterAbonnement()
         {
-            var roleid = (int)(Session["RoleId"]);
-            if ((Session["UtilisateurId"] != null) && (roleid == 2))
+            if ((Session["UtilisateurId"] != null) && ((int)Session["RoleId"] == 2))
             {
                 return View();
             }
@@ -45,8 +44,7 @@ namespace Fil_rouge_evente.Controllers
 
         public ActionResult listerTousAbonnement()
         {
-            var roleid = (int)(Session["RoleId"]);
-            if ((Session["UtilisateurId"] != null) && (roleid == 2))
+            if ((Session["UtilisateurId"] != null) && ((int)Session["RoleId"] == 2))
             {
                 var res = iadmin.listerTousAbonnements();
                 return View(res);
@@ -59,8 +57,7 @@ namespace Fil_rouge_evente.Controllers
 
         public ActionResult supprimerAbonnement(int id)
         {
-            var roleid = (int)(Session["RoleId"]);
-            if ((Session["UtilisateurId"] != null) && (roleid == 2))
+            if ((Session["UtilisateurId"] != null) && ((int)Session["RoleId"] == 2))
             {
                 iadmin.supprimerAbonnement(id);
                 return RedirectToAction("listerTousAbonnement");
@@ -71,13 +68,20 @@ namespace Fil_rouge_evente.Controllers
             }
         }
 
-        public ActionResult modifierAbonnement(int id)
+        public ActionResult modifierAbonnement(int? id)
         {
-            var roleid = (int)(Session["RoleId"]);
-            if ((Session["UtilisateurId"] != null) && (roleid == 2))
+            if ((Session["UtilisateurId"] != null) && ((int)Session["RoleId"] == 2))
             {
-                Abonnement res = iadmin.afficherAbonnement(id);
-                return View(res);
+                if (id.HasValue)
+                {
+                    var id2 = (int)id;
+                    Abonnement res = iadmin.afficherAbonnement(id2);
+                    return View(res);
+                }
+                else
+                {
+                    return RedirectToAction("loginAdmin", "Administrateur");
+                }
             }
             else
             {
@@ -89,15 +93,14 @@ namespace Fil_rouge_evente.Controllers
         [HttpPost]
         public ActionResult modifierAbonnement(Abonnement a)
         {
-            var roleid = (int)(Session["RoleId"]);
-            if ((Session["UtilisateurId"] != null) && (roleid == 2))
+            if (ModelState.IsValid)
             {
                 iadmin.modifierAbonnement(a);
                 return RedirectToAction("listerTousAbonnement");
             }
             else
             {
-                return RedirectToAction("loginAdmin", "Administrateur");
+                return View(a);
             }
         }
     }

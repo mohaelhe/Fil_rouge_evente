@@ -88,6 +88,7 @@ namespace Fil_rouge_evente.Dao
         {
             using (var db = new Dao.ProjetContext())
             {
+
                 var res = db.produits.Find(ProduitId);
                 db.produits.Remove(res);
                 db.SaveChanges();
